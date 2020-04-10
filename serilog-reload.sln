@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29728.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{30F55F40-5AAD-42A9-9399-4B5C11B6D53C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{B5F49A64-CC03-4564-9AE7-2E86E2FD53E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "example", "example", "{31BF732F-4D0F-41A4-AABA-338E3438BFB4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serilog.Reload", "src\Serilog.Reload\Serilog.Reload.csproj", "{50A45A13-E676-459B-9CEB-C857247803D5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Serilog.Reload.Tests", "test\Serilog.Reload.Tests\Serilog.Reload.Tests.csproj", "{E5731D25-24B5-4413-890E-52AD01DC8672}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleExample", "example\ConsoleExample\ConsoleExample.csproj", "{A3C6D4F9-08BE-4291-B0DB-635B9409EA90}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sln", "sln", "{F07E80C2-69C9-4515-A20B-91F75C2D42E2}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		appveyor.yml = appveyor.yml
+		Build.ps1 = Build.ps1
+		LICENSE = LICENSE
+		README.md = README.md
+		serilog-reload.sln.DotSettings = serilog-reload.sln.DotSettings
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{50A45A13-E676-459B-9CEB-C857247803D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50A45A13-E676-459B-9CEB-C857247803D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50A45A13-E676-459B-9CEB-C857247803D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50A45A13-E676-459B-9CEB-C857247803D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5731D25-24B5-4413-890E-52AD01DC8672}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5731D25-24B5-4413-890E-52AD01DC8672}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5731D25-24B5-4413-890E-52AD01DC8672}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5731D25-24B5-4413-890E-52AD01DC8672}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3C6D4F9-08BE-4291-B0DB-635B9409EA90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3C6D4F9-08BE-4291-B0DB-635B9409EA90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3C6D4F9-08BE-4291-B0DB-635B9409EA90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3C6D4F9-08BE-4291-B0DB-635B9409EA90}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{50A45A13-E676-459B-9CEB-C857247803D5} = {30F55F40-5AAD-42A9-9399-4B5C11B6D53C}
+		{E5731D25-24B5-4413-890E-52AD01DC8672} = {B5F49A64-CC03-4564-9AE7-2E86E2FD53E8}
+		{A3C6D4F9-08BE-4291-B0DB-635B9409EA90} = {31BF732F-4D0F-41A4-AABA-338E3438BFB4}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AF0422E0-854D-4A17-8FE0-417E6ED4FEFC}
+	EndGlobalSection
+EndGlobal
