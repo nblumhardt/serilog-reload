@@ -1,6 +1,6 @@
 # Serilog.Reload [![Build status](https://ci.appveyor.com/api/projects/status/xrdx9mhx8ttayfbh/branch/master?svg=true)](https://ci.appveyor.com/project/NicholasBlumhardt/serilog-reload/branch/master)
 
-A reloadable Serilog wrapper.
+A reloadable Serilog wrapper, under active development.
 
 This package provides `ReloadableLogger`, a Serilog `ILogger` that can be updated with new configuration after creation.
 

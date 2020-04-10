@@ -905,5 +905,31 @@ namespace Serilog.Reload
                 return update;
             }
         }
+
+        internal bool CreateChild(
+            ILogger root, 
+            IReloadableLogger parent, 
+            ILogger cachedParent,
+            Func<ILogger, ILogger> configureChild,
+            out ILogger child,
+            out ILogger newRoot,
+            out ILogger newCached,
+            out bool frozen)
+        {
+            if (_frozen)
+            {
+                var (logger, _) = UpdateForCaller(root, cachedParent, parent, out newRoot, out newCached, out frozen);
+                child = configureChild(logger);
+                return true; // Always an update, since the caller has not observed that the reloadable logger is frozen.
+            }
+
+            // No synchronization, here - a lot of loggers are created and thrown away again without ever being used,
+            // so we just return a lazy wrapper.
+            child = new CachingReloadableLogger(this, root, parent, configureChild);
+            newRoot = default;
+            newCached = default;
+            frozen = default;
+            return false;
+        }
     }
 }

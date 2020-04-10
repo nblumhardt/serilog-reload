@@ -37,7 +37,20 @@ namespace Serilog.Reload
             if (_frozen)
                 return _cached.ForContext(enricher);
 
-            return new CachingReloadableLogger(_reloadableLogger, _root, this, p => p.ForContext(enricher));
+            if (_reloadableLogger.CreateChild(
+                _root,
+                this,
+                _cached, 
+                p => p.ForContext(enricher),
+                out var child,
+                out var newRoot,
+                out var newCached,
+                out var frozen))
+            {
+                Update(newRoot, newCached, frozen);
+            }
+
+            return child;
         }
 
         public ILogger ForContext(IEnumerable<ILogEventEnricher> enrichers)
@@ -47,7 +60,22 @@ namespace Serilog.Reload
             if (_frozen)
                 return _cached.ForContext(enrichers);
 
-            return new CachingReloadableLogger(_reloadableLogger, _root, this, p => p.ForContext(enrichers));        }
+
+            if (_reloadableLogger.CreateChild(
+                _root,
+                this,
+                _cached, 
+                p => p.ForContext(enrichers),
+                out var child,
+                out var newRoot,
+                out var newCached,
+                out var frozen))
+            {
+                Update(newRoot, newCached, frozen);
+            }
+
+            return child;
+        }
 
         public ILogger ForContext(string propertyName, object value, bool destructureObjects = false)
         {
@@ -56,7 +84,28 @@ namespace Serilog.Reload
             if (_frozen)
                 return _cached.ForContext(propertyName, value, destructureObjects);
 
-            return new CachingReloadableLogger(_reloadableLogger, _root, this, p => p.ForContext(propertyName, value, destructureObjects));
+            // There's a trade-off, here. Changes to destructuring configuration won't be picked up, but,
+            // it's better to not extend the lifetime of `value` or pass it between threads unexpectedly.
+            var eager = ReloadLogger();
+            if (!eager.BindProperty(propertyName, value, destructureObjects, out var property))
+                return this;
+
+            var enricher = new FixedPropertyEnricher(property);
+            
+            if (_reloadableLogger.CreateChild(
+                _root,
+                this,
+                _cached,
+                p => p.ForContext(enricher),
+                out var child,
+                out var newRoot,
+                out var newCached,
+                out var frozen))
+            {
+                Update(newRoot, newCached, frozen);
+            }
+
+            return child;
         }
 
         public ILogger ForContext<TSource>()
@@ -64,7 +113,21 @@ namespace Serilog.Reload
             if (_frozen)
                 return _cached.ForContext<TSource>();
 
-            return new CachingReloadableLogger(_reloadableLogger, _root, this, p => p.ForContext<TSource>());
+
+            if (_reloadableLogger.CreateChild(
+                _root,
+                this,
+                _cached, 
+                p => p.ForContext<TSource>(),
+                out var child,
+                out var newRoot,
+                out var newCached,
+                out var frozen))
+            {
+                Update(newRoot, newCached, frozen);
+            }
+
+            return child;
         }
 
         public ILogger ForContext(Type source)
@@ -72,7 +135,20 @@ namespace Serilog.Reload
             if (_frozen)
                 return _cached.ForContext(source);
 
-            return new CachingReloadableLogger(_reloadableLogger, _root, this, p => p.ForContext(source));
+            if (_reloadableLogger.CreateChild(
+                _root,
+                this,
+                _cached, 
+                p => p.ForContext(source),
+                out var child,
+                out var newRoot,
+                out var newCached,
+                out var frozen))
+            {
+                Update(newRoot, newCached, frozen);
+            }
+
+            return child;
         }
 
         void Update(ILogger newRoot, ILogger newCached, bool frozen)
