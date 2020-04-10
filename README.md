@@ -1,4 +1,4 @@
-# Serilog.Reload [![Build status](https://ci.appveyor.com/api/projects/status/xrdx9mhx8ttayfbh/branch/master?svg=true)](https://ci.appveyor.com/project/NicholasBlumhardt/serilog-reload/branch/master)
+# Serilog.Reload [![Build status](https://ci.appveyor.com/api/projects/status/xrdx9mhx8ttayfbh/branch/master?svg=true)](https://ci.appveyor.com/project/NicholasBlumhardt/serilog-reload/branch/master) [![NuGet Version](https://img.shields.io/nuget/vpre/Serilog.Reload)](https://www.nuget.org/packages/Serilog.Reload)
 
 A reloadable Serilog wrapper, under active development.
 
