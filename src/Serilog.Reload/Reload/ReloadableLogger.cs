@@ -48,6 +48,25 @@ namespace Serilog.Reload
                 _logger = _configure(new LoggerConfiguration()).CreateLogger();
             }
         }
+        
+        public void Extend(Func<LoggerConfiguration, LoggerConfiguration> extendConfiguration)
+        {
+            if (extendConfiguration == null) throw new ArgumentNullException(nameof(extendConfiguration));
+
+            lock (_sync)
+            {
+                if (_configure == null)
+                    throw new InvalidOperationException("To extend the current logger, either supply a callback to the `ReloadableLogger()` constructor, or, pass a callback to `Reload()`.");
+
+                var previousConfiguration = _configure;
+                _configure = cfg =>
+                {
+                    previousConfiguration(cfg);
+                    extendConfiguration(cfg);
+                    return cfg;
+                };
+            }
+        }
 
         public void Reload(Func<LoggerConfiguration, LoggerConfiguration> configure)
         {
