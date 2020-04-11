@@ -5,7 +5,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
 using Serilog.Events;
-using Serilog.Reload;
 using WebExample.Example;
 
 namespace WebExample
@@ -14,7 +13,9 @@ namespace WebExample
     {
         public static void Main(string[] args)
         {
-            Log.Logger = new ReloadableLogger(cfg => cfg.WriteTo.Console());
+            Log.Logger = new LoggerConfiguration()
+                .WriteTo.Console()
+                .CreateReloadableLogger();
 
             Log.Information("Starting up");
             

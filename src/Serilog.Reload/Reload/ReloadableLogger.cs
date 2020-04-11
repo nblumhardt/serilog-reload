@@ -19,6 +19,13 @@ namespace Serilog.Reload
         // `true`, `_logger` is final and a memory barrier ensures the final value is seen by all threads.
         bool _frozen;
 
+        // Unsure whether this should be exposed; pit-of-success usage is the constructor accepting a callback; this exists
+        // to support the `CreateReloadableLogger()` convenience extension.
+        internal ReloadableLogger(Logger initial)
+        {
+            _logger = initial ?? throw new ArgumentNullException(nameof(initial));
+        }
+
         public ReloadableLogger(Func<LoggerConfiguration, LoggerConfiguration> configure)
         {
             _configure = configure ?? throw new ArgumentNullException(nameof(configure));
@@ -34,6 +41,9 @@ namespace Serilog.Reload
         {
             lock (_sync)
             {
+                if (_configure == null)
+                    throw new InvalidOperationException("To reload the logger, either supply a callback to the `ReloadableLogger()` constructor, or, pass a callback to `Reload()`.");
+                
                 _logger.Dispose();
                 _logger = _configure(new LoggerConfiguration()).CreateLogger();
             }
