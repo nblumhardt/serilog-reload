@@ -26,6 +26,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sln", "sln", "{F07E80C2-69C
 		serilog-reload.sln.DotSettings = serilog-reload.sln.DotSettings
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebExample", "example\WebExample\WebExample.csproj", "{7B08C46E-9C1A-4206-92FC-2E3CC18BB8D3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,10 @@ Global
 		{A3C6D4F9-08BE-4291-B0DB-635B9409EA90}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A3C6D4F9-08BE-4291-B0DB-635B9409EA90}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A3C6D4F9-08BE-4291-B0DB-635B9409EA90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B08C46E-9C1A-4206-92FC-2E3CC18BB8D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B08C46E-9C1A-4206-92FC-2E3CC18BB8D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B08C46E-9C1A-4206-92FC-2E3CC18BB8D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B08C46E-9C1A-4206-92FC-2E3CC18BB8D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,6 +58,7 @@ Global
 		{50A45A13-E676-459B-9CEB-C857247803D5} = {30F55F40-5AAD-42A9-9399-4B5C11B6D53C}
 		{E5731D25-24B5-4413-890E-52AD01DC8672} = {B5F49A64-CC03-4564-9AE7-2E86E2FD53E8}
 		{A3C6D4F9-08BE-4291-B0DB-635B9409EA90} = {31BF732F-4D0F-41A4-AABA-338E3438BFB4}
+		{7B08C46E-9C1A-4206-92FC-2E3CC18BB8D3} = {31BF732F-4D0F-41A4-AABA-338E3438BFB4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AF0422E0-854D-4A17-8FE0-417E6ED4FEFC}
